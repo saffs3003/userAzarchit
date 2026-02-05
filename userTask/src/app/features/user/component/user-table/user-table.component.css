@@ -3,8 +3,15 @@ th {
 }
 table {
   overflow-x: auto;
+
   td {
     font-size: clamp(8px, 1rem, 2.5rem);
+  }
+
+  tr {
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 .table-container {

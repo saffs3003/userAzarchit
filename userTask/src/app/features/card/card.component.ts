@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../../core/services/user.service';
 import { Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -11,4 +12,9 @@ import { Input } from '@angular/core';
 })
 export class CardComponent {
   @Input() user?: User;
+  constructor(private router: Router) {}
+
+  userDetails(userId: number) {
+    this.router.navigate(['/detail', userId]);
+  }
 }

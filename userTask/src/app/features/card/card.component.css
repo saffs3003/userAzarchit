@@ -5,4 +5,9 @@
   border-radius: 20px;
   padding: 20px;
   min-width: 200px;
+  &:hover {
+    cursor: pointer;
+    background-color: var(--hover-color);
+    color: aliceblue;
+  }
 }
