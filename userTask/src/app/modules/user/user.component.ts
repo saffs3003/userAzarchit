@@ -26,13 +26,33 @@ export interface Address {
   styleUrl: './user.component.css',
 })
 export class UserComponent implements OnInit {
-  users: User[] = [];
+  users?: User[];
 
   constructor(private userService: UserService) {}
+
+  page = 1;
+  pageSize = 5;
+  paginatedUsers?: User[];
 
   ngOnInit() {
     this.userService.fetchUsers().subscribe((data) => {
       this.users = data;
+      this.setCurrentPage();
     });
+  }
+  ngOnChanges() {
+    debugger;
+    this.setCurrentPage();
+  }
+
+  setCurrentPage() {
+    const start = (this.page - 1) * this.pageSize;
+    const end = start + this.pageSize;
+    this.paginatedUsers = this.users?.slice(start, end);
+  }
+
+  onPageChange(page: number) {
+    this.page = page;
+    this.setCurrentPage();
   }
 }

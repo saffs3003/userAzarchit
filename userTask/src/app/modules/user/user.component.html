@@ -1,2 +1,23 @@
-<h1>Users</h1>
-<app-user-table [users]="users"></app-user-table>
+<div class="mb-5">
+  <h2>Table View</h2>
+  <app-user-table
+    [users]="paginatedUsers"
+    [page]="page"
+    [pageSize]="pageSize"
+    [totalUsers]="users?.length ?? 0"
+    (pageChange)="onPageChange($event)"
+  >
+  </app-user-table>
+</div>
+
+<div>
+  <h2>Card View</h2>
+  <app-user-list
+    [users]="paginatedUsers"
+    [page]="page"
+    [pageSize]="pageSize"
+    [totalUsers]="users?.length ?? 0"
+    (pageChange)="onPageChange($event)"
+  >
+  </app-user-list>
+</div>
