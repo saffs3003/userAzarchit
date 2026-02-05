@@ -40,12 +40,19 @@ export class UserComponent implements OnInit {
   paginatedUsers?: User[];
   searchResultList?: User[];
   view = 'table';
+  isLoading = false;
 
   ngOnInit() {
+    const savedView = localStorage.getItem('userViewPreference');
+    if (savedView === 'table' || savedView === 'card') {
+      this.view = savedView;
+    }
+    this.isLoading = true;
     this.userService.fetchUsers().subscribe((data) => {
       this.users = data;
       this.searchResultList = this.users;
       this.setCurrentPage();
+      this.isLoading = false;
     });
   }
   ngOnChanges() {
@@ -65,6 +72,7 @@ export class UserComponent implements OnInit {
   }
   changeView(viewType: string) {
     this.view = viewType;
+    localStorage.setItem('userViewPreference', viewType);
   }
   searchResult() {
     const searchKey = this.searchForm.value.searchKey?.trim().toLowerCase();

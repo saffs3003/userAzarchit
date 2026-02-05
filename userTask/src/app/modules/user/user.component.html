@@ -5,6 +5,9 @@
       <button (click)="changeView('card')">Card View</button>
     </div>
 
+    <div *ngIf="isLoading" class="error-container">
+      <p>Loading ...</p>
+    </div>
     <form [formGroup]="searchForm" (submit)="searchResult()">
       <input
         id="name"

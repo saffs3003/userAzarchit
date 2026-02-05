@@ -1,9 +1,18 @@
+<div *ngIf="isloading" class="loading-container">
+  <p>Loading user details...</p>
+</div>
+
 <div class="user-container">
   <div>
-    <button (click)="goBack()">go back to list</button>
+    <button class="btn btn-secondary" (click)="goBack()">Go Back</button>
   </div>
 
-  <div class="user-details">
+  <div *ngIf="iserror && !isloading" class="error-container">
+    <p>Failed to load user details.</p>
+    <button class="btn btn-primary me-2" (click)="retry()">Retry</button>
+  </div>
+
+  <div *ngIf="user && !isloading && !iserror" class="user-details">
     <h2>{{ user?.name }}</h2>
     <p>{{ user?.username }}</p>
     <p>{{ user?.email }}</p>
