@@ -33,6 +33,7 @@ export class UserComponent implements OnInit {
   page = 1;
   pageSize = 5;
   paginatedUsers?: User[];
+  view = 'table';
 
   ngOnInit() {
     this.userService.fetchUsers().subscribe((data) => {
@@ -54,5 +55,8 @@ export class UserComponent implements OnInit {
   onPageChange(page: number) {
     this.page = page;
     this.setCurrentPage();
+  }
+  changeView(viewType: string) {
+    this.view = viewType;
   }
 }

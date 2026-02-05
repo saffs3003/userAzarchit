@@ -1,23 +1,31 @@
 <div class="mb-5">
-  <h2>Table View</h2>
-  <app-user-table
-    [users]="paginatedUsers"
-    [page]="page"
-    [pageSize]="pageSize"
-    [totalUsers]="users?.length ?? 0"
-    (pageChange)="onPageChange($event)"
-  >
-  </app-user-table>
-</div>
+  <div class="switch">
+    <button (click)="changeView('table')">Table View</button>
+    <button (click)="changeView('card')">Card View</button>
+  </div>
+  <div *ngIf="view === 'table'; else cardView">
+    <h2>Table View</h2>
+    <app-user-table
+      [users]="paginatedUsers"
+      [page]="page"
+      [pageSize]="pageSize"
+      [totalUsers]="users?.length ?? 0"
+      (pageChange)="onPageChange($event)"
+    >
+    </app-user-table>
+  </div>
 
-<div>
-  <h2>Card View</h2>
-  <app-user-list
-    [users]="paginatedUsers"
-    [page]="page"
-    [pageSize]="pageSize"
-    [totalUsers]="users?.length ?? 0"
-    (pageChange)="onPageChange($event)"
-  >
-  </app-user-list>
+  <ng-template #cardView>
+    <div>
+      <h2>Card View</h2>
+      <app-user-list
+        [users]="paginatedUsers"
+        [page]="page"
+        [pageSize]="pageSize"
+        [totalUsers]="users?.length ?? 0"
+        (pageChange)="onPageChange($event)"
+      >
+      </app-user-list>
+    </div>
+  </ng-template>
 </div>
