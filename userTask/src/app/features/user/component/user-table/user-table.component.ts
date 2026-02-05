@@ -3,6 +3,7 @@ import { User } from '../../../../core/services/user.service';
 import { NgForOf } from '@angular/common';
 import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-table',
@@ -17,4 +18,10 @@ export class UserTableComponent {
   @Input() pageSize = 3;
   @Input() totalUsers = 0;
   @Output() pageChange = new EventEmitter<number>();
+
+  constructor(private router: Router) {}
+
+  userDetails(userId: number) {
+    this.router.navigate(['/detail', userId]);
+  }
 }

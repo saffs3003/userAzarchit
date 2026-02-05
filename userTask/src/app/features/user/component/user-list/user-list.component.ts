@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { User } from '../../../../core/services/user.service';
 import { NgForOf } from '@angular/common';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -18,4 +19,8 @@ export class UserListComponent {
   @Input() pageSize = 3;
   @Input() totalUsers = 0;
   @Output() pageChange = new EventEmitter<number>();
+  constructor(private router: Router) {}
+  viewUserDetail(userId: number) {
+    this.router.navigate(['/detail', userId]);
+  }
 }

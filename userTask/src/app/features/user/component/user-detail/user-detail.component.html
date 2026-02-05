@@ -1,0 +1,16 @@
+<p>user-detail works!</p>
+<div>
+  <button (click)="goBack()">go back to list</button>
+</div>
+
+<p>{{ user?.name }}</p>
+<p>{{ user?.username }}</p>
+<p>{{ user?.email }}</p>
+<p>{{ user?.address?.street }},{{ user?.address?.city }}</p>
+<p>
+  <a href="{{ user?.website }}">
+    {{ user?.company?.name }}
+  </a>
+</p>
+
+<p>{{ user?.phone }}</p>

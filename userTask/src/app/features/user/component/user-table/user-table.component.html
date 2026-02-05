@@ -5,10 +5,9 @@
       <th scope="col">Name</th>
       <th scope="col">Username</th>
       <th scope="col">Email</th>
-      <th scope="col">Address</th>
 
       <th scope="col">Company</th>
-      <th scope="col">phone</th>
+      <th scope="col">Actions</th>
 
       <th></th>
     </tr>
@@ -18,14 +17,13 @@
       <td>{{ user?.name }}</td>
       <td>{{ user?.username }}</td>
       <td>{{ user?.email }}</td>
-      <td>{{ user?.address?.street }},{{ user?.address?.city }}</td>
       <td>
         <a href="{{ user?.website }}">
           {{ user?.company?.name }}
         </a>
       </td>
 
-      <td>{{ user?.phone }}</td>
+      <td><button (click)="userDetails(user.id)">View Details</button></td>
     </tr>
   </tbody>
 </table>

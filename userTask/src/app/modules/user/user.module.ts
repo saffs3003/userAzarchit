@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserTableComponent } from '../../features/user/component/user-table/user-table.component';
 import { UserListComponent } from '../../features/user/component/user-list/user-list.component';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { UserDetailComponent } from '../../features/user/component/user-detail/user-detail.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -20,6 +22,9 @@ const routes: Routes = [
     UserTableComponent,
     UserListComponent,
     NgbPagination,
+    UserDetailComponent,
+    ReactiveFormsModule,
+    FormsModule,
   ],
 })
 export class UserModule {}

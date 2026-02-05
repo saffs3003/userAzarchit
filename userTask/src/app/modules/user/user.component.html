@@ -3,6 +3,18 @@
     <button (click)="changeView('table')">Table View</button>
     <button (click)="changeView('card')">Card View</button>
   </div>
+  <div>
+    <form [formGroup]="searchForm" (submit)="searchResult()">
+      <input
+        id="name"
+        type="text"
+        formControlName="searchKey"
+        (input)="searchResult()"
+      />
+      <button>Search</button>
+    </form>
+  </div>
+
   <div *ngIf="view === 'table'; else cardView">
     <h2>Table View</h2>
     <app-user-table

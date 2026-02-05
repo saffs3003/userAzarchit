@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../core/services/user.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 export interface User {
   id: number;
@@ -27,17 +29,22 @@ export interface Address {
 })
 export class UserComponent implements OnInit {
   users?: User[];
+  searchForm = new FormGroup({
+    searchKey: new FormControl(''),
+  });
 
   constructor(private userService: UserService) {}
 
   page = 1;
   pageSize = 5;
   paginatedUsers?: User[];
+  searchResultList?: User[];
   view = 'table';
 
   ngOnInit() {
     this.userService.fetchUsers().subscribe((data) => {
       this.users = data;
+      this.searchResultList = this.users;
       this.setCurrentPage();
     });
   }
@@ -49,7 +56,7 @@ export class UserComponent implements OnInit {
   setCurrentPage() {
     const start = (this.page - 1) * this.pageSize;
     const end = start + this.pageSize;
-    this.paginatedUsers = this.users?.slice(start, end);
+    this.paginatedUsers = this.searchResultList?.slice(start, end);
   }
 
   onPageChange(page: number) {
@@ -58,5 +65,25 @@ export class UserComponent implements OnInit {
   }
   changeView(viewType: string) {
     this.view = viewType;
+  }
+  searchResult() {
+    const searchKey = this.searchForm.value.searchKey?.trim().toLowerCase();
+
+    if (!searchKey) {
+      this.searchResultList = this.users;
+
+      return;
+    }
+
+    this.searchResultList = this.users?.filter((user) => {
+      return (
+        user.name.toLowerCase().includes(searchKey) ||
+        user.email.toLowerCase().includes(searchKey)
+      );
+    });
+    this.page = 1;
+    this.setCurrentPage();
+
+    console.log(this.searchResultList, 'sesadadadsarchlist');
   }
 }
