@@ -1,8 +1,8 @@
 .card {
   display: flex;
   flex-direction: column;
-  background-color: rgba(240, 248, 255, 0.508);
+  background-color: var(--highlightColor);
   border-radius: 20px;
   padding: 20px;
-  min-width: 300px;
+  min-width: 200px;
 }

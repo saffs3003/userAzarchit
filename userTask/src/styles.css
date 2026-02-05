@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  padding: clamp(2px, 5vw, 40px);
+}
+
+:root {
+  --highlightColor: rgba(180, 215, 245, 0.552);
+  --hover-color: rgba(57, 118, 171, 0.59);
+}
+button {
+  background-color: var(--highlightColor);
+  border: none;
+  box-shadow: 1px 1px 3px grey;
+  padding: 12px;
+  border-radius: 8px;
+  &:hover {
+    background-color: var(--hover-color);
+    color: aliceblue;
+  }
+}

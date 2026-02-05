@@ -1,0 +1,19 @@
+th {
+  background-color: var(--highlightColor);
+}
+table {
+  overflow-x: auto;
+  td {
+    font-size: clamp(8px, 1rem, 2.5rem);
+  }
+}
+.table-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 600px) {
+  .email {
+    display: none;
+  }
+}

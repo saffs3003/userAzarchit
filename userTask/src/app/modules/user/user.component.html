@@ -1,15 +1,17 @@
-<div class="mb-5">
-  <div class="switch">
-    <button (click)="changeView('table')">Table View</button>
-    <button (click)="changeView('card')">Card View</button>
-  </div>
-  <div>
+<main>
+  <div class="title-bar">
+    <div class="switch">
+      <button (click)="changeView('table')">Table View</button>
+      <button (click)="changeView('card')">Card View</button>
+    </div>
+
     <form [formGroup]="searchForm" (submit)="searchResult()">
       <input
         id="name"
         type="text"
         formControlName="searchKey"
         (input)="searchResult()"
+        placeholder="Filter by name or email"
       />
       <button>Search</button>
     </form>
@@ -40,4 +42,4 @@
       </app-user-list>
     </div>
   </ng-template>
-</div>
+</main>
