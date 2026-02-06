@@ -10,3 +10,10 @@ main {
   gap: 20px;
   align-items: center;
 }
+
+@media screen and (max-width: 800) {
+  .card-list {
+    width: 100%;
+    flex-direction: column;
+  }
+}

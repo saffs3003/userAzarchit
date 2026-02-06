@@ -4,13 +4,13 @@
     <div class="switch">
       <button
         (click)="changeView('table')"
-        [ngClass]="{ active: view == 'table', disabled: view != 'table' }"
+        [ngClass]="{ active: view == 'table' }"
       >
         Table View
       </button>
       <button
         (click)="changeView('card')"
-        [ngClass]="{ active: view == 'card', disabled: view != 'card' }"
+        [ngClass]="{ active: view == 'card' }"
       >
         Card View
       </button>
