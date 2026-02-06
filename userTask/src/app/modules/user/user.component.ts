@@ -56,7 +56,6 @@ export class UserComponent implements OnInit {
     });
   }
   ngOnChanges() {
-    debugger;
     this.setCurrentPage();
   }
 
