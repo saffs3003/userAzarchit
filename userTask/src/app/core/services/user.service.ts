@@ -33,4 +33,8 @@ export class UserService {
   fetchUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url);
   }
+
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.url}/${id}`);
+  }
 }

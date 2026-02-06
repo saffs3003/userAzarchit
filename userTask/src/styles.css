@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  padding: clamp(2px, 5vw, 40px);
+}
+
+:root {
+  --highlightColor: rgba(180, 215, 245, 0.552);
+  --hover-color: rgba(57, 118, 171, 0.59);
+}
+button {
+  background-color: var(--highlightColor);
+  border: none;
+  box-shadow: 1px 1px 3px grey;
+  padding: 12px;
+  border-radius: 8px;
+  &:hover {
+    background-color: var(--hover-color);
+    color: aliceblue;
+  }
+}
+
+.loading-container {
+  width: 160px;
+  height: 120px;
+  top: 40%;
+  left: 40%;
+  position: absolute;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  align-self: center;
+  justify-self: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,31 +1,64 @@
-<div class="mb-5">
-  <div class="switch">
-    <button (click)="changeView('table')">Table View</button>
-    <button (click)="changeView('card')">Card View</button>
-  </div>
-  <div *ngIf="view === 'table'; else cardView">
-    <h2>Table View</h2>
-    <app-user-table
-      [users]="paginatedUsers"
-      [page]="page"
-      [pageSize]="pageSize"
-      [totalUsers]="users?.length ?? 0"
-      (pageChange)="onPageChange($event)"
-    >
-    </app-user-table>
+<main>
+  <h1>Dashboard</h1>
+  <div class="title-bar">
+    <div class="switch">
+      <button
+        (click)="changeView('table')"
+        [ngClass]="{ active: view == 'table', disabled: view != 'table' }"
+      >
+        Table View
+      </button>
+      <button
+        (click)="changeView('card')"
+        [ngClass]="{ active: view == 'card', disabled: view != 'card' }"
+      >
+        Card View
+      </button>
+    </div>
+
+    <form [formGroup]="searchForm" (submit)="searchResult()">
+      <input
+        id="name"
+        type="text"
+        formControlName="searchKey"
+        (input)="searchResult()"
+        placeholder="Filter by name or email"
+      />
+      <button>Search</button>
+    </form>
   </div>
 
-  <ng-template #cardView>
-    <div>
-      <h2>Card View</h2>
-      <app-user-list
+  <div *ngIf="isLoading" class="loading-container">
+    <p>Loading user details...</p>
+
+    <div class="loader"></div>
+  </div>
+
+  <div *ngIf="!isLoading" class="user-container">
+    <div *ngIf="view === 'table'; else cardView">
+      <h2>Table View</h2>
+      <app-user-table
         [users]="paginatedUsers"
         [page]="page"
         [pageSize]="pageSize"
         [totalUsers]="users?.length ?? 0"
         (pageChange)="onPageChange($event)"
       >
-      </app-user-list>
+      </app-user-table>
     </div>
-  </ng-template>
-</div>
+
+    <ng-template #cardView>
+      <div>
+        <h2>Card View</h2>
+        <app-user-list
+          [users]="paginatedUsers"
+          [page]="page"
+          [pageSize]="pageSize"
+          [totalUsers]="users?.length ?? 0"
+          (pageChange)="onPageChange($event)"
+        >
+        </app-user-list>
+      </div>
+    </ng-template>
+  </div>
+</main>
