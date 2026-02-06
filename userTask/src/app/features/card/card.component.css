@@ -11,3 +11,9 @@
     color: aliceblue;
   }
 }
+
+@media screen and (max-width: 800) {
+  .card-list {
+    width: 100%;
+  }
+}
